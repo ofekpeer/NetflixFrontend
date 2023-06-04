@@ -55,7 +55,7 @@ function Navbar() {
           <img src={user ? user.profilePicture : '.'} alt="" />
           <p className="username">{user ? user.username : '.'}</p>
           <div className="profile">
-            <ArrowDropDownIcon className="icon" />
+            <ArrowDropDownIcon className="option" />
             <div className="options">
               <span onClick={logoutHandler}>Logout</span>
               <span></span>
