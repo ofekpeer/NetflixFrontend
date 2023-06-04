@@ -1,14 +1,17 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import './Navbar.scss';
 import { AuthContext } from '../../auth/authContext';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Logout } from '../../auth/authAction';
+import MenuIcon from '@mui/icons-material/Menu';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [menuIsOpen, setmenuIsOpen] = useState(true);
 
   const { user, dispatch } = useContext(AuthContext);
   window.onscroll = () => {
@@ -17,13 +20,45 @@ function Navbar() {
     return () => (window.onscroll = null);
   };
 
+  useEffect(() => {
+    document.body.addEventListener('click', handleClose);
+    return () => {
+      document.body.removeEventListener('click', handleClose);
+    };
+  }, []);
+
+  const handleClose = (e) => {
+    e.stopPropagation();
+    setmenuIsOpen(true);
+    document.body.classList.remove('in-menu');
+  };
+
   const logoutHandler = () => {
     dispatch(Logout());
+  };
+
+  const handelClick = (e) => {
+    e.stopPropagation();
+    setmenuIsOpen(!menuIsOpen);
+    document.body.classList.add('in-menu');
   };
 
   return (
     <div className={isScrolled ? 'navbar scrolled' : 'navbar'}>
       <div className="container">
+        <div className="right">
+          <div className="profile">
+            <MoreHorizIcon className="option" />
+            <div className="options">
+              <span onClick={logoutHandler}>Logout</span>
+              <span></span>
+            </div>
+          </div>
+          <Link className="link" to="/search">
+            <SearchIcon className="icon" />
+          </Link>
+          <NotificationsIcon className="icon notific" />
+        </div>
         <div className="left">
           <Link to="/">
             <img
@@ -31,36 +66,39 @@ function Navbar() {
               alt="Netflix"
             />
           </Link>
-          <Link to="/" className="link">
-            <span>Homepage</span>
-          </Link>
-          <Link to="/series" className="link">
-            <span className="navbarmainLinks">Series</span>
-          </Link>
-          <Link to="/movies" className="link">
-            <span className="navbarmainLinks">Movies</span>
-          </Link>
-          <Link to="/new-and-popular" className="link">
-            <span>New and Popular</span>
-          </Link>
-          <Link to="/my-list" className="link">
-            <span>My List</span>
-          </Link>
-        </div>
-        <div className="right">
-          <Link className="link" to="/search">
-            <SearchIcon className="icon" />
-          </Link>
-          <NotificationsIcon className="icon" />
-          <img src={user ? user.profilePicture : '.'} alt="" />
-          <p className="username">{user ? user.username : '.'}</p>
-          <div className="profile">
-            <ArrowDropDownIcon className="option" />
-            <div className="options">
-              <span onClick={logoutHandler}>Logout</span>
-              <span></span>
+          {menuIsOpen ? (
+            <MenuIcon onClick={(e) => handelClick(e)} />
+          ) : (
+            <div className="menu">
+              <div className="user-profile">
+                <strong className="username">
+                  {user ? user.username : '.'}
+                </strong>
+                <img
+                  className="profile-menu"
+                  src={user ? user.profilePicture : '.'}
+                  alt=""
+                />
+              </div>
+              <div className="links">
+                <NavLink to="/" className="link">
+                  <span>Homepage</span>
+                </NavLink>
+                <NavLink to="/series" className="link">
+                  <span className="navbarmainLinks">Series</span>
+                </NavLink>
+                <NavLink to="/movies" className="link">
+                  <span className="navbarmainLinks">Movies</span>
+                </NavLink>
+                <NavLink to="/new-and-popular" className="link">
+                  <span>New and Popular</span>
+                </NavLink>
+                <NavLink to="/my-list" className="link">
+                  <span>My List</span>
+                </NavLink>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

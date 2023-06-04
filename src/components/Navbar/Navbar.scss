@@ -1,5 +1,9 @@
 @import '../../App.scss';
 
+.in-menu:not(.menu) {
+  opacity: 0.9;
+}
+
 .navbar {
   width: 100%;
   color: white;
@@ -20,44 +24,85 @@
     justify-content: space-between;
     height: 50px;
 
-
-    @include tablet{
-  
-        align-items: center;
-        padding: 0px 20px;
+    @include tablet {
+      align-items: center;
+      padding: 0px 20px;
     }
     .left {
       display: flex;
       align-items: center;
       img {
-        @include mobile{
-            display: none;
-        }
         height: 25px;
-        margin-right: 40px;
+      }
+      .menu {
+        overflow: auto;
+        background-color: rgb(38, 38, 38);
+        position: absolute;
+        top: 0;
+        width: 310px;
+        margin-left: 23px;
+        @include tablet {
+          width: 280px;
+        }
+        @include mobile {
+          width: 200px;
+        }
+        height: 1024px;
+        right: 0;
+        text-align: end;
+        .user-profile {
+          display: flex;
+          align-items: center;
+          justify-content: end;
+        }
+
+        .username {
+          margin-right: 10px; /* Add any desired margin between the username and the image */
+        }
+
+        .profile-menu {
+          justify-content: end;
+          height: 100px;
+        }
+        .links {
+          display: grid;
+          text-align: right;
+          .link {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            height: 50px;
+            margin-top: 24px;
+          }
+          .active {
+            border-right: 8px solid red;
+          }
+        }
       }
       span {
         margin: 0px 10px;
         cursor: pointer;
-        @include tablet{
-            display: none;
-        }
-        &.navbarmainLinks{
-            @include tablet{
-                display: block;
-            }
+        // @include tablet {
+        //   display: none;
+        // }
+        &.navbarmainLinks {
+          @include tablet {
+            display: block;
+          }
         }
       }
     }
     .right {
       display: flex;
       align-items: center;
-      .option{
+      .option {
         margin: 0px 15px;
       }
       .icon {
         margin: 0px 15px;
-        @media (max-width: 350px) {
+      }
+      .notific {
+        @media (max-width: 390px) {
           display: none;
         }
       }
@@ -68,30 +113,27 @@
         object-fit: cover;
       }
 
-      .username{
+      .username {
         margin-left: 5px;
       }
-      .profile{
-        .options{
-            display: none;
-            z-index: 9999999990;
-            background-color: var(--main-color);
-            border-radius: 5px;
-
+      .profile {
+        .options {
+          display: none;
+          z-index: 9999999990;
+          background-color: var(--main-color);
+          border-radius: 5px;
         }
-        span{
-            padding: 10px;
-            margin-right: 10px;
-            cursor: pointer;
-
+        span {
+          padding: 10px;
+          margin-right: 10px;
+          cursor: pointer;
         }
-        &:hover{
-            .options{
-                display: flex;
-                flex-direction:column;
-                position: absolute;
-            }
-
+        &:hover {
+          .options {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+          }
         }
       }
     }

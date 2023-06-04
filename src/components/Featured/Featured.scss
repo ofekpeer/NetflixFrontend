@@ -13,7 +13,8 @@
     display: flex;
     align-items: center;
     @include mobile {
-      display: none;
+      font-size: 60px;
+      left: 41px;
     }
   }
   img {
@@ -63,7 +64,6 @@
         font-weight: 800;
         margin-right: 10px;
         cursor: pointer;
-
 
         &.play {
           background-color: #fff;
