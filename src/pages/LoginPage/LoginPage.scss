@@ -34,12 +34,32 @@
     justify-content: center;
     color: #fff;
     form {
-      width: 300px;
       height: 300px;
       padding: 30px;
       border-radius: 5px;
       background-color: var(--main-color);
+      @media (max-width:520px) {
+        width: 320px;
+      }
+      @media (max-width:420px) {
+        width: 300px;
+      }
+      @media (max-width:386px) {
+        width: 290px;
+      }
+      @media (max-width:369px) {
+        width: 260px;
+      }
+      @media (max-width:341px) {
+        width: 240px;
+      }
 
+      @media (max-width:324px) {
+        width: 220px;
+      }
+      @media (max-width:290px) {
+        width: 210px;
+      }
       display: flex;
       flex-direction: column;
       justify-content: space-around;
