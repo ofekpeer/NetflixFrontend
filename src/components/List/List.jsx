@@ -54,7 +54,9 @@ function List({ list }) {
         showIndicators
         className="carousel"
         responsive={responsive}
-        swipeable
+        infinite={true}
+        swipeable={false}
+        draggable={false}
       >
         {list.contents.map((item, i) => (
           <ListItem item={item} key={i}></ListItem>
