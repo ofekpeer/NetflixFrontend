@@ -71,7 +71,7 @@ function LoginPage() {
           >
             {isFatching ? <ClipLoader color="#ffc8ce" /> : "Sign In"}
           </button>
-          {/* {error && <span className='error'>{error.response.data.message}</span>} */}
+          {error && <span className='error'>{error.response.data.message}</span>}
           <span>
             New to Netflix?{' '}
             <Link className="link link-signin" to="/register">
