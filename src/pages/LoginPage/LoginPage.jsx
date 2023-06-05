@@ -35,7 +35,6 @@ function LoginPage() {
         },
         dispatch
       );
-      console.log("ddddddddd");
     } catch (err) {
       dispatch(LoginFail(err));
     } 
@@ -70,7 +69,7 @@ function LoginPage() {
             onClick={handleLogin}
             disabled={isFatching}
           >
-            {isFatching ? <ClipLoader color="#ffc8ce" /> : "Sign In"}
+            {/* {isFatching ? <ClipLoader color="#ffc8ce" /> : "Sign In"} */}
           </button>
           {error && <span className='error'>{error.response.data.message}</span>}
           <span>
