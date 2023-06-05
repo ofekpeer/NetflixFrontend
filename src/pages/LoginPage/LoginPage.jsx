@@ -4,11 +4,13 @@ import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../auth/authContext';
 import { loginCall } from '../../auth/authApiCalls';
 import './LoginPage.scss';
+import { LoginFail } from '../../auth/authAction';
+import { ClipLoader } from 'react-spinners';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { isFetching, user, dispatch } = useContext(AuthContext);
+  const { isFatching, user, dispatch, error } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -26,16 +28,17 @@ function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await loginCall(
+     await loginCall(
         {
           email,
           password,
         },
         dispatch
       );
+      console.log("ddddddddd");
     } catch (err) {
-      console.log(err);
-    }
+      dispatch(LoginFail(err));
+    } 
   };
 
   return (
@@ -65,10 +68,11 @@ function LoginPage() {
           <button
             className="loginButton"
             onClick={handleLogin}
-            disabled={isFetching}
+            disabled={isFatching}
           >
-            Sign In
+            {isFatching ? <ClipLoader color="#ffc8ce" /> : "Sign In"}
           </button>
+          {error && <span className='error'>{error.response.data.message}</span>}
           <span>
             New to Netflix?{' '}
             <Link className="link link-signin" to="/register">

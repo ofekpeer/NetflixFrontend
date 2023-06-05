@@ -6,7 +6,7 @@ const initialState = {
     localStorage.getItem('user') !== null
       ? JSON.parse(localStorage.getItem('user'))
       : null,
-  isFetching: false,
+      isFatching: false,
   error: false
 }
 
@@ -23,7 +23,7 @@ export const AuthContextProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         user: state.user,
-        isFetching: state.isFetching,
+        isFatching: state.isFatching,
         error: state.error,
         dispatch
       }}

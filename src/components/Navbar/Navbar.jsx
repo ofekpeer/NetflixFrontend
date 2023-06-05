@@ -51,7 +51,7 @@ function Navbar() {
             <MoreHorizIcon className="option" />
             <div className="options">
               <span onClick={logoutHandler}>Logout</span>
-              <span></span>
+              <span>Settings</span>
             </div>
           </div>
           <Link className="link" to="/search">
