@@ -43,12 +43,18 @@ function List({ list }) {
     <div className="list">
       <span className="list-title">{list.title}</span>
       <Carousel
+        centerMode
+        showStatus={false}
+        dynamicHeight={false}
+        emulateTouch
+        swipeScrollTolerance={50}
+        centerSlidePercentage={30}
+        showThumbs={false}
+        infiniteLoop
+        showIndicators
         className="carousel"
         responsive={responsive}
-        infinite={true}
-        centerMode={true}
-        swipeable={false}
-        draggable={false}
+        swipeable
       >
         {list.contents.map((item, i) => (
           <ListItem item={item} key={i}></ListItem>
