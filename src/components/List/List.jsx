@@ -40,7 +40,7 @@ function List({ list }) {
     },
     mobile1: {
       breakpoint: { max: 450, min: 0 },
-      items: 2,
+      items: 1,
     },
   };
   return (
