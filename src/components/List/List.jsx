@@ -59,7 +59,7 @@ function List({ list }) {
         className="carousel"
         responsive={responsive}
         infinite={true}
-        swipeable={false}
+        swipeable={true}
         draggable={false}
       >
         {list.contents.map((item, i) => (
