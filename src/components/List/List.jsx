@@ -35,7 +35,11 @@ function List({ list }) {
       items: 3,
     },
     mobile: {
-      breakpoint: { max: 676, min: 0 },
+      breakpoint: { max: 676, min: 450 },
+      items: 2,
+    },
+    mobile1: {
+      breakpoint: { max: 450, min: 0 },
       items: 2,
     },
   };

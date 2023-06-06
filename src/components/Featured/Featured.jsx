@@ -11,7 +11,7 @@ function Featured ({type}) {
  const navigate = useNavigate()
  const {user} = useContext(AuthContext);
 
-  useEffect(()=>{
+  useEffect(()=>{//change it to -take the all contents ant then choos random content
     const getRandomContent = async ()=>{
         try{
             let path = "contents/random";
