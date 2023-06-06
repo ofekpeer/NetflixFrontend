@@ -1,3 +1,4 @@
+
 .listItem {
   position: relative; /* Added position relative */
   z-index: 2;
@@ -26,14 +27,17 @@
   @media (max-width: 1257px) and (min-width: 1200px) {
     width: 180px;
   }
+  @media (max-width: 1200px) and (min-width: 1155px) {
+    width: 225px;
+  }
   @media (max-width: 1155px) and (min-width: 1090px) {
-    width: 212px;
+    width: 202px;
   }
   @media screen and (max-width: 1090px) and (min-width: 1000px) {
     width: 193px;
   }
   @media screen and (max-width: 1000px) and (min-width: 950px) {
-    width: 183px;
+    width: 173px;
   }
   @media screen and (max-width: 950px) and (min-width: 901px) {
     width: 173px;
@@ -56,22 +60,19 @@
   @media screen and (max-width: 614px) and (min-width: 551px) {
     width: 183px;
   }
-  @media screen and (max-width: 578px) and (min-width: 545px) {
-    width: 173px;
-  }
-  @media screen and (max-width: 545px) and (min-width: 511px) {
-    width: 163px;
+  @media screen and (max-width: 584px) and (min-width: 511px) {
+    width: 233px;
   }
 
-  @media screen and (max-width: 510px) and (min-width: 480px) {
-    width: 153px;
+  @media screen and (max-width: 511px) and (min-width: 480px) {
+    width: 223px;
   }
 
   @media screen and (max-width: 480px) and (min-width: 451px) {
-    width: 143px;
+    width: 213px;
   }
   @media screen and (max-width: 451px) and (min-width: 421px) {
-    width: 203px;
+    width: 200px;
   }
   @media screen and (max-width: 421px) and (min-width: 401px) {
     width: 193px;
@@ -99,182 +100,58 @@
     // border: 1px solid white;
   }
   
-  .video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    
-    .itemInfo {
-      display: flex;
-      font-size: 10000px;
+  @media (min-width: 1200px) {
+    .video {
       position: absolute;
-      z-index: 99999999999999999999999999;
-      flex-direction: column;
-      padding: 5px;
-      .icons {
+      top: 0;
+      left: 0;
+      
+      .itemInfo {
         display: flex;
-        margin-bottom: 20px;
-        .icon {
-          margin-top: 55px;
-          border: 2px solid white;
-          padding: 5px;
-          border-radius: 50%;
-          margin-right: 10px;
-          font-size: 16px;
+        font-size: 10000px;
+        position: absolute;
+        z-index: 99999999999999999999999999;
+        flex-direction: column;
+        padding: 5px;
+        .icons {
+          display: flex;
+          margin-bottom: 20px;
+          .icon {
+            margin-top: 55px;
+            border: 2px solid white;
+            padding: 5px;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-size: 16px;
+          }
+        }
+        .itemInfoTop {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        .limit {
+          border: 1px solid grey;
+          padding: 1px 3px;
+          margin: 0 10px;
+        }
+        .desc {
+          font-size: 13px;
+          margin-bottom: 10px;
+        }
+        .genre {
+          font-size: 15px;
+          color: lightgray;
         }
       }
-      .itemInfoTop {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        font-size: 14px;
-        font-weight: 600;
-      }
-      .limit {
-        border: 1px solid grey;
-        padding: 1px 3px;
-        margin: 0 10px;
-      }
-      .desc {
-        font-size: 13px;
-        margin-bottom: 10px;
-      }
-      .genre {
-        font-size: 15px;
-        color: lightgray;
+    }
+    &:hover {
+      img{
+        height: 50%;
       }
     }
   }
-  &:hover {
-    img{
-      height: 50%;
-    }
-  }
-  //   z-index: 1;
-  //   justify-content: center;
-  //   margin-left: 70px;
-  //   height: 470px;
-  //   position: absolute;
-  //   top: -180px;
-  //   left: -70px;
-
-  //   @media (max-width: 1600px) and (min-width: 1090px) {
-  //     width: 233px;
-  //   }
-  //   @media (max-width: 1412px) and (min-width: 1338px) {
-  //     width: 213px;
-  //   }
-  //   @media (max-width: 1338px) and (min-width: 1257px) {
-  //     width: 195px;
-  //   }
-  //   @media (max-width: 1257px) and (min-width: 1200px) {
-  //     width: 180px;
-  //   }
-  //   @media (max-width: 1155px) and (min-width: 1090px) {
-  //     width: 212px;
-  //   }
-  //   @media screen and (max-width: 1090px) and (min-width: 1000px) {
-  //     width: 193px;
-  //   }
-  //   @media screen and (max-width: 1000px) and (min-width: 950px) {
-  //     width: 183px;
-  //   }
-  //   @media screen and (max-width: 950px) and (min-width: 901px) {
-  //     width: 173px;
-  //   }
-  //   @media screen and (max-width: 854px) and (min-width: 801px) {
-  //     width: 193px;
-  //   }
-  //   @media screen and (max-width: 813px) and (min-width: 765px) {
-  //     width: 183px;
-  //   }
-  //   @media screen and (max-width: 765px) and (min-width: 719px) {
-  //     width: 173px;
-  //   }
-  //   @media screen and (max-width: 719px) and (min-width: 677px) {
-  //     width: 163px;
-  //   }
-  //   @media screen and (max-width: 645px) and (min-width: 601px) {
-  //     width: 193px;
-  //   }
-  //   @media screen and (max-width: 614px) and (min-width: 551px) {
-  //     width: 183px;
-  //   }
-  //   @media screen and (max-width: 578px) and (min-width: 545px) {
-  //     width: 173px;
-  //   }
-  //   @media screen and (max-width: 545px) and (min-width: 511px) {
-  //     width: 163px;
-  //   }
-
-  //   @media screen and (max-width: 510px) and (min-width: 480px) {
-  //     width: 153px;
-  //   }
-
-  //   @media screen and (max-width: 480px) and (min-width: 451px) {
-  //     width: 143px;
-  //   }
-  //   @media screen and (max-width: 451px) and (min-width: 421px) {
-  //     width: 203px;
-  //   }
-  //   @media screen and (max-width: 421px) and (min-width: 401px) {
-  //     width: 193px;
-  //   }
-  //   @media screen and (max-width: 401px) and (min-width: 357px) {
-  //     width: 173px;
-  //   }
-  //   @media screen and (max-width: 357px) and (min-width: 333px) {
-  //     width: 153px;
-  //   }
-  //   @media screen and (max-width: 333px) and (min-width: 301px) {
-  //     width: 143px;
-  //   }
-  //   @media screen and (max-width: 301px) and (min-width: 280px) {
-  //     width: 123px;
-  //   }
-  //   @media screen and (max-width: 280px) and (min-width: 250px) {
-  //     width: 103px;
-  //   }
-  //   -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
-  //   box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
-  //   border-radius: 5px;
-
-  //   .itemInfo {
-  //     display: flex;
-  //     flex-direction: column;
-  //     padding: 5px;
-  //     .icons {
-  //       display: flex;
-  //       margin-bottom: 20px;
-  //       .icon {
-  //         margin-top: 55px;
-  //         border: 2px solid white;
-  //         padding: 5px;
-  //         border-radius: 50%;
-  //         margin-right: 10px;
-  //         font-size: 16px;
-  //       }
-  //     }
-  //     .itemInfoTop {
-  //       display: flex;
-  //       align-items: center;
-  //       margin-bottom: 10px;
-  //       font-size: 14px;
-  //       font-weight: 600;
-  //     }
-  //     .limit {
-  //       border: 1px solid grey;
-  //       padding: 1px 3px;
-  //       margin: 0 10px;
-  //     }
-  //     .desc {
-  //       font-size: 13px;
-  //       margin-bottom: 10px;
-  //     }
-  //     .genre {
-  //       font-size: 15px;
-  //       color: lightgray;
-  //     }
-  //   }
-  // }
 }
+
