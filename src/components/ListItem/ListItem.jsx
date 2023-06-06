@@ -22,7 +22,7 @@ function ListItem ({ item }) {
             <ReactPlayer
               className='video'
               pip
-              height='40%'
+              height='50%'
               width="100%"
               url={item.trailer}
               playing={true}
