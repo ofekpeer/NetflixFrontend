@@ -39,13 +39,13 @@ function HomePage ({ type }) {
     }
 
     GetRandomList()
-  }, [ type, user])
+  }, [type, user])
 
   useEffect(() => {
     if (!user) {
       navigate('/login?redirect=/')
     }
-  }, [user, navigate])
+  }, [navigate, user])
   
   return (
     <div className='home'>

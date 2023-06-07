@@ -18,3 +18,12 @@ export const LoginFail = (err) => ({
 export const Logout = () => ({
   type: LOGOUT,
 });
+
+export const AddToList = (newContentList) => ({
+  type: 'ADD_TO_LIST',
+  payload: newContentList.data,
+})
+export const AddToListFail = (err) => ({
+  type: 'ADD_TO_LIST_FAIL',
+  payload: err,
+})

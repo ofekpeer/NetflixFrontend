@@ -4,18 +4,26 @@ export const authReducer = (state, action) => {
   switch (action.type) {
     case LOGIN_START: {
       console.log("start");
-      return { user: null, isFatching: true, error: null }
+      return {...state, user: null, isFatching: true, error: null }
     }
     case LOGIN_SUCCESS: {
-      return { user: action.payload, isFatching: false, error: null }
+      console.log(action.payload);
+      return { ...state,user: action.payload.user, isFatching: false, error: null,userContentList: action.payload.contentList }
     }
     case LOGIN_FAIL: {
       console.log("fail");
 
-      return { user: null, isFatching: false, error: action.payload }
+      return { ...state,user: null, isFatching: false, error: action.payload }
+    }
+    case 'ADD_TO_LIST':{
+      let newContentList = action.payload;
+       return {...state, userContentList: newContentList}
+    }
+    case 'ADD_TO_LIST_FAIL':{
+       return {...state, error: action.payload.response.data.message}
     }
     case LOGOUT: {
-      return { user: null, isFatching: false, error: null }
+      return { ...state,user: null, isFatching: false, error: null ,userContentList: null}
     }
     default: {
       return { ...state }

@@ -42,10 +42,6 @@ function List({ list }) {
       breakpoint: { max: 585, min: 0 },
       items: 1,
     },
-    // mobile1: {
-    //   breakpoint: { max: 450, min: 0 },
-    //   items: 1,
-    // },
   };
   return (
     <div className="list">
