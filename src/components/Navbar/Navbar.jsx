@@ -60,45 +60,49 @@ function Navbar() {
           <NotificationsIcon className="icon notific" />
         </div>
         <div className="left">
-          <Link to="/">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-              alt="Netflix"
-            />
-          </Link>
-          {menuIsOpen ? (
-            <MenuIcon onClick={(e) => handelClick(e)} />
-          ) : (
-            <div className="menu">
-              <div className="user-profile">
-                <strong className="username">
-                  {user ? user.username : '.'}
-                </strong>
-                <img
-                  className="profile-menu"
-                  src={user ? user.profilePicture : '.'}
-                  alt=""
-                />
+          <div>
+            <Link to="/">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
+                alt="Netflix"
+              />
+            </Link>
+          </div>
+          <div>
+            {menuIsOpen ? (
+              <MenuIcon onClick={(e) => handelClick(e)} />
+            ) : (
+              <div className="menu">
+                <div className="user-profile">
+                  <strong className="username">
+                    {user ? user.username : '.'}
+                  </strong>
+                  <img
+                    className="profile-menu"
+                    src={user ? user.profilePicture : '.'}
+                    alt=""
+                  />
+                </div>
+                <div className="links">
+                  <NavLink to="/" className="link">
+                    <span>Homepage</span>
+                  </NavLink>
+                  <NavLink to="/series" className="link">
+                    <span className="navbarmainLinks">Series</span>
+                  </NavLink>
+                  <NavLink to="/movies" className="link">
+                    <span className="navbarmainLinks">Movies</span>
+                  </NavLink>
+                  <NavLink to="/new-and-popular" className="link">
+                    <span>New and Popular</span>
+                  </NavLink>
+                  <NavLink to="/my-list" className="link">
+                    <span>My List</span>
+                  </NavLink>
+                </div>
               </div>
-              <div className="links">
-                <NavLink to="/" className="link">
-                  <span>Homepage</span>
-                </NavLink>
-                <NavLink to="/series" className="link">
-                  <span className="navbarmainLinks">Series</span>
-                </NavLink>
-                <NavLink to="/movies" className="link">
-                  <span className="navbarmainLinks">Movies</span>
-                </NavLink>
-                <NavLink to="/new-and-popular" className="link">
-                  <span>New and Popular</span>
-                </NavLink>
-                <NavLink to="/my-list" className="link">
-                  <span>My List</span>
-                </NavLink>
-              </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>
