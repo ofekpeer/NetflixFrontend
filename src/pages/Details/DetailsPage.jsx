@@ -20,13 +20,6 @@ function DetailsPage() {
   }, [user, navigate]);
 
   useEffect(() => {
-      // const getContent = async () => {
-      //   const data = await axios.get(`contents/${_id}`, {
-      //     headers: { authorization: `Bearer ${user.token}` },
-      //   });
-      //   setContent(data);
-      // };
-      // getContent();
 
       const wapper = async () => {
         try{
@@ -40,7 +33,7 @@ function DetailsPage() {
 
       wapper();
 
-  }, [_id, user.token]);
+  }, [_id, user]);
 
   return (
     <div className="main">
