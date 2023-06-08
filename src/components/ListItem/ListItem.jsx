@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';import AddIcon from '@mui/icons-material/Add';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import AddIcon from '@mui/icons-material/Add';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownAltOutlined';
 import './ListItem.scss';
@@ -14,8 +15,10 @@ function ListItem({ item }) {
   const { user, dispatch, error, userContentList } = useContext(AuthContext);
   const [exist, setExist] = useState(false);
   useEffect(() => {
-    const exsitItem = userContentList.content.find((i) => i._id === item._id);
-    if (exsitItem) setExist(true);
+    if (userContentList) {
+      const exsitItem = userContentList.content.find((i) => i._id === item._id);
+      if (exsitItem) setExist(true);
+    }
   }, [item._id, userContentList]);
 
   const addToList = async (e) => {
