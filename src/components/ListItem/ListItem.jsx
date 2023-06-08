@@ -21,6 +21,12 @@ function ListItem({ item }) {
     }
   }, [item._id, userContentList]);
 
+  const removeItem = (e) => {
+    e.preventDefault();
+    setExist(false)
+    //remove from state and db!!!
+  };
+
   const addToList = async (e) => {
     e.preventDefault();
     if (userContentList) {
@@ -28,6 +34,8 @@ function ListItem({ item }) {
       if (!exsitItem) {
         try {
           await addContent(item, user, dispatch);
+          setExist(true)
+
         } catch (err) {
           console.log(err);
         }
@@ -35,7 +43,9 @@ function ListItem({ item }) {
     }
   };
 
-  return (
+  return error ? (
+    <div>{error}</div>
+  ) : (
     <Link to={{ pathname: `/details/${item._id}` }} className="link">
       <div
         className="listItem"
@@ -57,7 +67,10 @@ function ListItem({ item }) {
               <div className="icons">
                 <PlayArrowIcon className="icon link" />
                 {exist ? (
-                  <PlaylistAddCheckIcon className="icon"></PlaylistAddCheckIcon>
+                  <PlaylistAddCheckIcon
+                    onClick={(e) => removeItem(e)}
+                    className="icon"
+                  ></PlaylistAddCheckIcon>
                 ) : (
                   <AddIcon className="icon" onClick={(e) => addToList(e)} />
                 )}
@@ -78,5 +91,4 @@ function ListItem({ item }) {
     </Link>
   );
 }
-
 export default ListItem;
