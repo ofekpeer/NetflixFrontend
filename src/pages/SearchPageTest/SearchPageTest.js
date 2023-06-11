@@ -1,34 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../auth/authContext';
+import '../SearchPage/SearchPage.scss';
 import Navbar from '../../components/Navbar/Navbar';
-import SearchIcon from '@mui/icons-material/Search';
-import CloseIcon from '@mui/icons-material/Close';
-import { genres } from '../../utils';
 import axios from 'axios';
-import './SearchPage.scss';
+import SearchIcon from '@mui/icons-material/Search';
+import { genres } from '../../utils';
+import CloseIcon from '@mui/icons-material/Close';
 
-function SearchPage() {
+
+function SearchPageTest() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const searchParams = new URLSearchParams(search);
 
-  const [searchText, setSearchtext] = useState('');
-  console.log(3);
   const queryParam = searchParams.get('query') || '';
   const genreParam = searchParams.get('genre') || '';
+  const [searchText, setSearchtext] = useState('');
   const [content, setContent] = useState([]);
   const { user } = useContext(AuthContext);
 
   const onSearchStart = () => {
-    navigate(
-      `${genreParam || searchText ? '?' : ''}${
-        genreParam ? `genre=${genreParam}` : ''
-      }${genreParam && searchText ? '&' : ''}${
-        searchText ? `query=${searchText}` : ''
-      }`
-      );
-      console.log(2);
+    navigate(searchText ? `?query=${searchText}` : '');
   };
 
   useEffect(() => {
@@ -43,20 +36,17 @@ function SearchPage() {
 
   useEffect(() => {
     const getReusult = async () => {
+        console.log( `contents/search/${ genreParam && searchText ? '?query=' + searchText  + '?genre=' + genreParam : searchText ? '?query=' + searchText : genreParam ? '?genre=' + genreParam : ''}  `);
       const response = await axios.get(
-        'contents/search' +
-          `${searchParams || searchText ? '?' : ''}${
-            genreParam ? `genre=${genreParam}` : ''
-          }${genreParam && searchText ? '&' : ''}${
-            searchText ? `query=${searchText}` : ''
-          }`,
-        { headers: { authorization: `Bearer ${user.token}` } }
+        `contents/search${ genreParam && searchText ? '?query=' + searchText  + '&genre=' + genreParam : searchText ? '?query=' + searchText : genreParam ? '?genre=' + genreParam : ''}  `,
+        {
+          headers: { authorization: `Bearer ${user.token}` },
+        }
       );
       setContent(response.data);
     };
     getReusult();
-    console.log(1);
-  }, [genreParam, queryParam]);
+  }, [searchText, user.token, queryParam,genreParam]);
 
   return (
     <>
@@ -76,23 +66,13 @@ function SearchPage() {
               </button>
             </div>
             <ul className="genres">
-              <li
-                onClick={() =>
-                  navigate(searchText ? `?query=${searchText}` : '')
-                }
-              >
-                Genre
-              </li>
+              <li>Genre</li>
               {genres.map((genre, i) => (
                 <li
                   value={genre}
                   key={i}
                   onClick={() =>
-                    navigate(
-                      searchText
-                        ? `?genre=${genre}&query=${searchText}`
-                        : `?genre=${genre}`
-                    )
+                    navigate('/search')
                   }
                 >
                   {genre}
@@ -101,7 +81,7 @@ function SearchPage() {
             </ul>
           </div>
           <div className="results">
-            <h3 className="resultText">
+          <h3 className="resultText">
               Your results: {queryParam ? `input: ${queryParam}, ` : ' '}{' '}
               {genreParam ? `genre: ${genreParam}` : ''}{' '}
               {queryParam || genreParam ? (
@@ -115,8 +95,6 @@ function SearchPage() {
                 ''
               )}{' '}
             </h3>
-
-            
             <div className="results-items">
               <div className="movies">
                 <h2>Movies</h2>
@@ -168,4 +146,4 @@ function SearchPage() {
   );
 }
 
-export default SearchPage;
+export default SearchPageTest;

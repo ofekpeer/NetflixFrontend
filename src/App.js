@@ -6,6 +6,7 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import WatchPage from './pages/WatchPage/WatchPage';
 import DetailsPage from './pages/Details/DetailsPage';
 import SearchPage from './pages/SearchPage/SearchPage';
+import SearchPageTest from './pages/SearchPageTest/SearchPageTest';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/watch/:_id" element={<WatchPage />} />
           <Route exact path="/details/:_id" element={<DetailsPage />} />
           <Route exact path="/search" element={<SearchPage />} />
+          <Route exact path="/searchTest" element={<SearchPageTest />} />
         </Routes>
       </BrowserRouter>
     </div>
