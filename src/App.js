@@ -6,7 +6,6 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import WatchPage from './pages/WatchPage/WatchPage';
 import DetailsPage from './pages/Details/DetailsPage';
 import SearchPage from './pages/SearchPage/SearchPage';
-import SearchPageTest from './pages/SearchPageTest/SearchPageTest';
 
 function App() {
   return (
