@@ -21,7 +21,6 @@ function App() {
           <Route exact path="/watch/:_id" element={<WatchPage />} />
           <Route exact path="/details/:_id" element={<DetailsPage />} />
           <Route exact path="/search" element={<SearchPage />} />
-          <Route exact path="/searchTest" element={<SearchPageTest />} />
         </Routes>
       </BrowserRouter>
     </div>
