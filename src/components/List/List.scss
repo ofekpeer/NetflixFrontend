@@ -1,16 +1,17 @@
 .list{
     width: 100%;
     // margin-top:10px;
-    .list_title{
-        font-size:30px;
-        font-weight: 500;
-        margin-left: 50px;
+    .list-title{
+        font-size:18px;
+        font-weight: bold;
+        margin-left: 10px;
     }
     .carousel{
         overflow: visible;
         // .item:hover{
         //     z-index: 1;
         // }
+        padding-top: 6px;
 
     }
 }

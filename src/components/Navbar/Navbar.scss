@@ -13,12 +13,12 @@
   z-index: 99999;
   background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
   animation-name: back;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
 
   &.scrolled {
     background-color: var(--main-color);
     animation-name: scrolled;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
   }
 
   @keyframes scrolled {

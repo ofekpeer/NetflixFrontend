@@ -30,9 +30,13 @@
     width: 50%;
 
     img {
-      @include mobile {
+      @include tablet {
         width: 100%;
       }
+      @include mobile {
+        width: 120%;
+      }
+
 
       width: 400px;
       max-height: 30vh;
