@@ -59,7 +59,7 @@ function Featured({ type }) {
           </div>
         )}
         {isFatching ? (
-          <Loaging loading='loading images...'></Loaging>
+          <Loaging loading="loading images..."></Loaging>
         ) : (
           <>
             <img
@@ -67,35 +67,35 @@ function Featured({ type }) {
               src={randomContent.img}
               alt={randomContent.title}
             />
-            <div className="info">
-              <img
-                loading="eager"
-                src={randomContent.imgTitle}
-                alt={randomContent.title}
-              />
-              <span className="desc">{randomContent.description}</span>
-              <div className="buttons">
-                <button
-                  className="play"
-                  onClick={() => {
-                    navigate(`/watch/${randomContent._id}`);
-                    console.log(randomContent._id);
-                  }}
-                >
-                  <PlayArrowIcon />
-                  <span>Play</span>
-                </button>
-                <button
-                  className="more"
-                  onClick={() => navigate(`/details/${randomContent._id}`)}
-                >
-                  <InfoOutlinedIcon />
-                  <span>Info</span>
-                </button>
-              </div>
-            </div>
           </>
         )}
+        <div className="info">
+          <img
+            loading="eager"
+            src={randomContent.imgTitle}
+            alt={randomContent.title}
+          />
+          <span className="desc">{randomContent.description}</span>
+          <div className="buttons">
+            <button
+              className="play"
+              onClick={() => {
+                navigate(`/watch/${randomContent._id}`);
+                console.log(randomContent._id);
+              }}
+            >
+              <PlayArrowIcon />
+              <span>Play</span>
+            </button>
+            <button
+              className="more"
+              onClick={() => navigate(`/details/${randomContent._id}`)}
+            >
+              <InfoOutlinedIcon />
+              <span>Info</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
