@@ -54,30 +54,30 @@ function Featured({ type }) {
           <span>{type === 'Movies' ? 'Movies' : 'Series'}</span>
         </div>
       )}
-      <img src={randomContent.img} alt={randomContent.title} />
-      <div className="info">
-        <img src={randomContent.imgTitle} alt={randomContent.title} />
-        <span className="desc">{randomContent.description}</span>
-        <div className="buttons">
-          <button
-            className="play"
-            onClick={() => {
-              navigate(`/watch/${randomContent._id}`);
-              console.log(randomContent._id);
-            }}
-          >
-            <PlayArrowIcon />
-            <span>Play</span>
-          </button>
-          <button
-            className="more"
-            onClick={() => navigate(`/details/${randomContent._id}`)}
-          >
-            <InfoOutlinedIcon />
-            <span>Info</span>
-          </button>
+        <img loading="eager" src={randomContent.img} alt={randomContent.title} />
+        <div className="info">
+          <img loading="eager" src={randomContent.imgTitle} alt={randomContent.title} />
+          <span className="desc">{randomContent.description}</span>
+          <div className="buttons">
+            <button
+              className="play"
+              onClick={() => {
+                navigate(`/watch/${randomContent._id}`);
+                console.log(randomContent._id);
+              }}
+            >
+              <PlayArrowIcon />
+              <span>Play</span>
+            </button>
+            <button
+              className="more"
+              onClick={() => navigate(`/details/${randomContent._id}`)}
+            >
+              <InfoOutlinedIcon />
+              <span>Info</span>
+            </button>
+          </div>
         </div>
-      </div>
     </div>
   );
 }
