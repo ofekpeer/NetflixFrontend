@@ -2,7 +2,7 @@ import React from 'react'
 import './Loading.scss'
 import ClipLoader from 'react-spinners/ClipLoader'
 
-function Loaging () {
+function Loaging ({loading}) {
   return (
     <div className='loading-container'>
       <ClipLoader
@@ -12,7 +12,7 @@ function Loaging () {
         aria-label='Loading Spinner'
         data-testid='loader'
       ></ClipLoader>
-      <span className='lable'>Loading...</span>
+      <span className='lable'>{loading}</span>
     </div>
   )
 }

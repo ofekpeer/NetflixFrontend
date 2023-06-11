@@ -14,6 +14,7 @@ function ListItem({ item }) {
   const [isHovered, setIsHovered] = useState(false);
   const { user, dispatch, error, userContentList } = useContext(AuthContext);
   const [exist, setExist] = useState(false);
+
   useEffect(() => {
     if (userContentList) {
       const exsitItem = userContentList.content.find((i) => i._id === item._id);

@@ -52,7 +52,7 @@ function HomePage ({ type }) {
       <Navbar></Navbar>
       <Featured type={type}></Featured>
       {loading ? (
-        <Loaging></Loaging>
+        <Loaging loading='loading content...'></Loaging>
       ) : error ? (
         <Error error={error}></Error>
       ) : (
