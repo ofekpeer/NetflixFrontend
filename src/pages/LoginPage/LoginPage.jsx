@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../auth/authContext';
@@ -11,11 +11,6 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { isFatching, user, dispatch, error } = useContext(AuthContext);
-  // const input = useRef(null);
-const inputclick = () => {
-  // input.current.focus();
-}
-
   const navigate = useNavigate();
 
   const { search } = useLocation();
@@ -58,11 +53,9 @@ const inputclick = () => {
         <form>
           <h1>Sign In</h1>
           <input
-          // ref={input}
-            onClick={inputclick}
-            onBlur={false}
-            autoFocus={false}
             type="email"
+            onTouchStart={(e) => e.preventDefault()}
+            onTouchMove={(e) => e.preventDefault()}
             placeholder="Email or phone number"
             onChange={(e) => setEmail(e.target.value)}
           />

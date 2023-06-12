@@ -1,67 +1,71 @@
-import React, { useContext, useEffect, useReducer } from 'react'
-import Navbar from '../../components/Navbar/Navbar'
-import Featured from '../../components/Featured/Featured'
-import { AuthContext } from '../../auth/authContext'
-import { useNavigate } from 'react-router-dom'
-import { reducerHomePage, initialHomePageReducer } from '../../reducerHomePAge'
-import axios from 'axios'
-import Loaging from '../../components/Loading/Loaging'
-import Error from '../../components/Error/Error'
-import List from '../../components/List/List'
-import "./HomePage.scss"
+import React, { useContext, useEffect, useReducer } from 'react';
+import Navbar from '../../components/Navbar/Navbar';
+import Featured from '../../components/Featured/Featured';
+import { AuthContext } from '../../auth/authContext';
+import { useNavigate } from 'react-router-dom';
+import { reducerHomePage, initialHomePageReducer } from '../../reducerHomePAge';
+import axios from 'axios';
+import Loaging from '../../components/Loading/Loaging';
+import Error from '../../components/Error/Error';
+import List from '../../components/List/List';
+import './HomePage.scss';
 
-
-function HomePage ({ type }) {
+function HomePage({ type }) {
   const [{ loading, error, lists }, dispatch] = useReducer(
     reducerHomePage,
     initialHomePageReducer
-  )
-  const { user } = useContext(AuthContext)
-  const navigate = useNavigate()
-  
+  );
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   useEffect(() => {
+
     if (!user) {
-      console.log("ddddd");
-      navigate('/login?redirect=/')
+      navigate('/login?redirect=/');
     }
-  }, [navigate, user])
-  
+  }, [navigate, user]);
+
   useEffect(() => {
-   const GetRandomList = async () => {
-      dispatch({ type: 'GET_REQUEST' })
+
+    const GetRandomList = async () => {
+      dispatch({ type: 'GET_REQUEST' });
       try {
-        const results = await axios.get(`lists/${type ? '?type=' + type : ''}`, {
-          headers: { authorization: `Bearer ${user.token}` }
-        })
+        const results = await axios.get(
+          `lists/${type ? '?type=' + type : ''}`,
+          {
+            headers: { authorization: `Bearer ${user.token}` },
+          }
+        );
         dispatch({
           type: 'GET_SUCCESS',
           payload: results.data.sort(
             () => Math.random() - 0.5 // Making array random
-          )
-        })
-        console.log(results.data)
+          ),
+        });
+        console.log(results.data);
       } catch (error) {
-        dispatch({ type: 'GET_FAIL', payload: error.message })
+        dispatch({ type: 'GET_FAIL', payload: error.message });
       }
-    }
+    };
 
-    GetRandomList()
-  }, [type, user])
+    GetRandomList();
+  }, [type, user]);
 
-  
   return (
-    <div className='home'>
-      <Navbar></Navbar>
-      <Featured type={type}></Featured>
-      {loading ? (
-        <Loaging loading='loading content...'></Loaging>
-      ) : error ? (
-        <Error error={error}></Error>
-      ) : (
-        lists.map((item, i) => <List className="list" key={i} list={item}></List>)
-      )}
-    </div>
-  )
+      <div className="home">
+        <Navbar></Navbar>
+        <Featured type={type}></Featured>
+        {loading ? (
+          <Loaging loading="loading content..."></Loaging>
+        ) : error ? (
+          <Error error={error}></Error>
+        ) : (
+          lists.map((item, i) => (
+            <List className="list" key={i} list={item}></List>
+          ))
+        )}
+      </div>
+  );
 }
 
-export default HomePage
+export default HomePage;

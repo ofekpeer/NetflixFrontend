@@ -1,61 +1,60 @@
-import React, { useContext, useState, useEffect } from 'react'
-import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import ReactPlayer from 'react-player'
-import { AuthContext } from '../../auth/authContext'
-import "./WatchPage.scss"
-import {getContent} from '../../utils'
+import React, { useContext, useState, useEffect } from 'react';
+import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import ReactPlayer from 'react-player';
+import { AuthContext } from '../../auth/authContext';
+import './WatchPage.scss';
+import { getContent } from '../../utils';
 
-function WatchPage () {
-  const params = useParams()
-  const { _id } = params
-  const navigate = useNavigate()
-  const [content, setContent] = useState()
-  const { user } = useContext(AuthContext)
+function WatchPage() {
+  const params = useParams();
+  const { _id } = params;
+  const navigate = useNavigate();
+  const [content, setContent] = useState();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     if (!user) {
-      navigate('/login?redirect=/')
+      navigate('/login?redirect=/');
     }
-  }, [user, navigate])
+  }, [user, navigate]);
   useEffect(() => {
-    async function GetContent () {
+    async function GetContent() {
       try {
         const wapper = async () => {
-          try{
-            const res = await getContent(_id, user.token)
+          try {
+            const res = await getContent(_id, user.token);
             setContent(res);
+          } catch (err) {
+            console.log(err);
           }
-          catch(err){
-            console.log(err)
-          }
-        }
-  
+        };
+
         wapper();
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     }
 
     GetContent();
-  }, [_id, navigate, user.token])
-  
+  }, [_id, navigate, user.token]);
+
   return (
-    <div className='watch'>
-      <Link className='back' to='/'>
-        <ArrowBackIosNewOutlinedIcon />
-        home
-      </Link>
-      <ReactPlayer
-        controls={true}
-        className='video'
-        height='100%'
-        width='100%'
-        url={content ? content.movie : ''}
-        playing
-      ></ReactPlayer>
-    </div>
-  )
+      <div className="watch">
+        <Link className="back" to="/">
+          <ArrowBackIosNewOutlinedIcon />
+          home
+        </Link>
+        <ReactPlayer
+          controls={true}
+          className="video"
+          height="100%"
+          width="100%"
+          url={content ? content.movie : ''}
+          playing
+        ></ReactPlayer>
+      </div>
+  );
 }
 
-export default WatchPage
+export default WatchPage;
