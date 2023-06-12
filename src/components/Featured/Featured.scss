@@ -37,7 +37,6 @@
         width: 120%;
       }
 
-
       width: 400px;
       max-height: 30vh;
       object-fit: scale-down;
@@ -70,15 +69,27 @@
         cursor: pointer;
 
         &.play {
-          background-color: #fff;
-          color: var(--main-color);
+          background-color: #6767674d;
+          color: #ffffff;
+          border-radius: 4px;
+          height: 35px;
+          &.play:hover {
+            background-color: #fff;
+            color: black;
+          }
         }
         &.more {
           @include mobile {
             display: none;
           }
-          background-color: gray;
-          color: #fff;
+          background-color: #6767674d;
+          color: #ffffff;
+          border-radius: 4px;
+          height: 35px;
+          &.more:hover {
+            background-color: #fff;
+            color: black;
+          }
           span {
             margin-left: 5px;
           }
