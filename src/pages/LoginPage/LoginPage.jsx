@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../auth/authContext';
@@ -15,12 +15,11 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const { search } = useLocation();
-  const inputElement = useRef(null);
+
   const redirectUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectUrl ? redirectUrl : '/';
 
   useEffect(() => {
-    inputElement.current.blur();
     if (user) {
       navigate(redirect);
     }
@@ -40,7 +39,15 @@ function LoginPage() {
       dispatch(LoginFail(err));
     }
   };
+  const [inputFocused, setInputFocused] = useState(false);
 
+  const handleInputClick = () => {
+    setInputFocused(true);
+  };
+
+  const handleBlur = () => {
+    setInputFocused(false);
+  };
   return (
     <div className="login">
       <div className="top">
@@ -56,7 +63,10 @@ function LoginPage() {
         <form>
           <h1>Sign In</h1>
           <input
-            ref={inputElement}
+            onClick={handleInputClick}
+            onBlur={handleBlur}
+            autoFocus={inputFocused}
+    
             type="email"
             placeholder="Email or phone number"
             onChange={(e) => setEmail(e.target.value)}
