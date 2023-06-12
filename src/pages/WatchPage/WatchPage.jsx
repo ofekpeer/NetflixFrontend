@@ -51,7 +51,7 @@ function WatchPage() {
           height="100%"
           width="100%"
           url={content ? content.movie : ''}
-          playing
+          playing={true}
         ></ReactPlayer>
       </div>
   );

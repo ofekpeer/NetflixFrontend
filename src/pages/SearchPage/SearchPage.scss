@@ -79,15 +79,19 @@
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
+        @include mobile {
+          text-align: center;
+        }
+
         .content {
           height: 300px;
           width: 200px;
           margin: 5px;
-          object-fit: cover;
+          object-fit: fill;
           @include mobile {
-            width: 95%;
-            height: 200px;
             align-items: center;
+            height: 200px;
+            width: 100px;
           }
         }
       }
