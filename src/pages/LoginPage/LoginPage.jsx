@@ -18,6 +18,9 @@ function LoginPage() {
 
   const redirectUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectUrl ? redirectUrl : '/';
+  const noFocuse = () => {
+    window.focus();
+  };
 
   useEffect(() => {
     if (user) {
@@ -28,7 +31,7 @@ function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-     await loginCall(
+      await loginCall(
         {
           email,
           password,
@@ -37,7 +40,7 @@ function LoginPage() {
       );
     } catch (err) {
       dispatch(LoginFail(err));
-    } 
+    }
   };
 
   return (
@@ -56,6 +59,7 @@ function LoginPage() {
           <h1>Sign In</h1>
           <input
             type="email"
+            onClick={noFocuse}
             placeholder="Email or phone number"
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -69,9 +73,11 @@ function LoginPage() {
             onClick={handleLogin}
             disabled={isFatching}
           >
-            {isFatching ? <ClipLoader color="#ffc8ce" /> : "Sign In"}
+            {isFatching ? <ClipLoader color="#ffc8ce" /> : 'Sign In'}
           </button>
-          {error && <span className='error'>{error.response.data.message}</span>}
+          {error && (
+            <span className="error">{error.response.data.message}</span>
+          )}
           <span>
             New to Netflix?{' '}
             <Link className="link link-signin" to="/register">
