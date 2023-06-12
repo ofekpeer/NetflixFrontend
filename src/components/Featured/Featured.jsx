@@ -48,7 +48,7 @@ function Featured({ type }) {
     return () => {
       clearInterval(interval);
     };
-  }, [type, user.token]);
+  }, [type, user]);
 
   return (
     <div>

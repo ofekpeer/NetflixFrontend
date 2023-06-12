@@ -18,7 +18,14 @@ function HomePage ({ type }) {
   )
   const { user } = useContext(AuthContext)
   const navigate = useNavigate()
-
+  
+  useEffect(() => {
+    if (!user) {
+      console.log("ddddd");
+      navigate('/login?redirect=/')
+    }
+  }, [navigate, user])
+  
   useEffect(() => {
    const GetRandomList = async () => {
       dispatch({ type: 'GET_REQUEST' })
@@ -41,11 +48,6 @@ function HomePage ({ type }) {
     GetRandomList()
   }, [type, user])
 
-  useEffect(() => {
-    if (!user) {
-      navigate('/login?redirect=/')
-    }
-  }, [navigate, user])
   
   return (
     <div className='home'>
