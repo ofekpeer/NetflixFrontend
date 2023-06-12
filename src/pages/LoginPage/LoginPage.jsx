@@ -18,7 +18,8 @@ function LoginPage() {
 
   const redirectUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectUrl ? redirectUrl : '/';
-  const noFocuse = () => {
+  const noFocuse = (e) => {
+    e.preventDefault();
     window.focus();
   };
 
@@ -59,7 +60,7 @@ function LoginPage() {
           <h1>Sign In</h1>
           <input
             type="email"
-            onClick={noFocuse}
+            onClick={(e) => noFocuse(e)}
             placeholder="Email or phone number"
             onChange={(e) => setEmail(e.target.value)}
           />
