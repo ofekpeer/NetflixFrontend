@@ -54,8 +54,6 @@ function LoginPage() {
           <h1>Sign In</h1>
           <input
             type="email"
-            onTouchStart={(e) => e.preventDefault()}
-            onTouchMove={(e) => e.preventDefault()}
             placeholder="Email or phone number"
             onChange={(e) => setEmail(e.target.value)}
           />
