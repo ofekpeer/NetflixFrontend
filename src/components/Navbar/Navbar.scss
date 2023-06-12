@@ -83,8 +83,12 @@
         }
 
         .profile-menu {
-          justify-content: end;
-          height: 100px;
+          height: 63px;
+          width: 82px;
+          margin: 8px;
+          margin-top: 20px;
+          object-fit: cover;
+          margin-right: 14px;
         }
         .links {
           display: grid;
