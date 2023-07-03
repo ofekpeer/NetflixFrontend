@@ -51,7 +51,6 @@ function Navbar() {
             <MoreHorizIcon className="option" />
             <div className="options">
               <span onClick={logoutHandler}>Logout</span>
-              <span>Settings</span>
             </div>
           </div>
           <Link className="link" to="/search">
@@ -93,12 +92,9 @@ function Navbar() {
                   <NavLink to="/movies" className="link">
                     <span className="navbarmainLinks">Movies</span>
                   </NavLink>
-                  <NavLink to="/new-and-popular" className="link">
-                    <span>New and Popular</span>
-                  </NavLink>
-                  <NavLink to="/my-list" className="link">
+                  {/* <NavLink to="/my-list" className="link">
                     <span>My List</span>
-                  </NavLink>
+                  </NavLink> */}
                 </div>
               </div>
             )}
