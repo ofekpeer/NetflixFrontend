@@ -16,7 +16,7 @@ export const registerCall = async (newUser, dispatch) => {
   dispatch(LoginStart());
   try {
     const res = await axios.post('auth/register', newUser);
-    dispatch(res.data ? LoginSuccess(res.data) : LoginFail(res));
+    dispatch(res.data ? LoginSuccess({user : res.data}) : LoginFail(res));
   } catch (error) {
     dispatch(LoginFail(error));
   }

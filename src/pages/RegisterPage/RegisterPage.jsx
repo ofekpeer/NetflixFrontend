@@ -28,6 +28,9 @@ const RegisterPage = () => {
     const username = email.substring(0, email.indexOf('@'));
     try {
       await registerCall({ email, password, username }, dispatch);
+      if(user){
+        navigate("/")
+      }
     } catch (err) {
       console.log(err);
     }
