@@ -3,13 +3,13 @@ import { createContext, useEffect, useReducer } from 'react';
 
 const initialState = {
   user:
-    localStorage.getItem('user') !== null
+    localStorage.getItem('user') !== null || undefined
       ? JSON.parse(localStorage.getItem('user'))
       : null,
   isFatching: false,
   error: false,
   userContentList:
-    localStorage.getItem('usercontentlist') !== null
+    localStorage.getItem('usercontentlist') !== null || undefined
       ? JSON.parse(localStorage.getItem('usercontentlist'))
       : {},
 };
