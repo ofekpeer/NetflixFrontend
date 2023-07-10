@@ -93,11 +93,13 @@ const RegisterPage = () => {
               onClick={handleFinish}
               disabled={isFatching}
             >
-              {!isFatching ? <CheckCircleIcon /> : <Loaging />}
+              {!isFatching ? <CheckCircleIcon /> : <Loaging size="30" />}
             </button>
           </form>
         )}
-        {error ? <p style={{color:"red"}}>email or password is not valid</p> : null}
+        {error ? (
+          <span style={{ color: 'red' }}>email or password is not valid</span>
+        ) : null}
         <div className="signin">
           <span>
             Already have an account?{' '}
