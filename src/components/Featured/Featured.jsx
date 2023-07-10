@@ -61,7 +61,7 @@ function Featured({ type }) {
           <>
             <img
               loading="eager"
-              src={randomContent.img}
+              src={randomContent ? randomContent.img : ""}
               alt={randomContent.title}
             />
           </>
