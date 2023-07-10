@@ -37,7 +37,7 @@ function Featured({ type }) {
     getContent();
     const interval = setInterval(() => {
       if (response !== undefined) {
-        setRandomContent(response.data[Math.floor(Math.random() * (response.data.length - 0 + 1) + 0)]);
+        setRandomContent(response.data[Math.floor(Math.random() * (response.data.length - 1 + 1) + 1)]);
         setIsFatching(false);
       }
     }, 4000);
