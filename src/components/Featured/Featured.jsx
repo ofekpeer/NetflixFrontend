@@ -34,15 +34,12 @@ function Featured({ type }) {
         console.log(err);
       }
     };
-
     getContent();
-    let index = 0;
     const interval = setInterval(() => {
-      setRandomContent(response.data[index]);
-      setIsFatching(false);
-      console.log(index);
-      if (index < response.data.length - 1) index++;
-      else index = 0;
+      if (response !== undefined) {
+        setRandomContent(response.data[Math.floor(Math.random() * (response.data.length - 0 + 1) + 0)]);
+        setIsFatching(false);
+      }
     }, 4000);
 
     return () => {

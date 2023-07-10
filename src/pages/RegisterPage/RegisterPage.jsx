@@ -7,6 +7,8 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import './RegisterPage.scss';
 import { registerCall } from '../../auth/authApiCalls';
+import Loaging from '../../components/Loading/Loaging';
+import { red } from '@mui/material/colors';
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('');
@@ -17,9 +19,10 @@ const RegisterPage = () => {
 
   const navigate = useNavigate();
 
-  const { user, isFetching, dispatch } = useContext(AuthContext);
+  const { error, user, isFatching, dispatch } = useContext(AuthContext);
 
   const handleStart = () => {
+    console.log(isFatching);
     setEmail(emailRef.current.value);
   };
 
@@ -28,13 +31,15 @@ const RegisterPage = () => {
     const username = email.substring(0, email.indexOf('@'));
     try {
       await registerCall({ email, password, username }, dispatch);
-      if(user){
-        navigate("/")
+      if (user) {
+        navigate('/');
       }
     } catch (err) {
       console.log(err);
     }
   };
+
+  const err = () => {};
 
   useEffect(() => {
     if (user) {
@@ -86,12 +91,13 @@ const RegisterPage = () => {
             <button
               className="registerButton"
               onClick={handleFinish}
-              disabled={isFetching}
+              disabled={isFatching}
             >
-              <CheckCircleIcon />
+              {!isFatching ? <CheckCircleIcon /> : <Loaging />}
             </button>
           </form>
         )}
+        {error ? <p style={{color:"red"}}>email or password is not valid</p> : null}
         <div className="signin">
           <span>
             Already have an account?{' '}
