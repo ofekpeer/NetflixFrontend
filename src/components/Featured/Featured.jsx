@@ -37,10 +37,12 @@ function Featured({ type }) {
     getContent();
     const interval = setInterval(() => {
       if (response !== undefined) {
-        setRandomContent(response.data[Math.floor(Math.random() * (response.data.length - 1 + 1) + 1)]);
+        const c = Math.floor(Math.random() * (response.data.length));
+        console.log(c);
+        setRandomContent(response.data[c]);
         setIsFatching(false);
       }
-    }, 4000);
+    }, 3500);
 
     return () => {
       clearInterval(interval);
@@ -61,7 +63,7 @@ function Featured({ type }) {
           <>
             <img
               loading="eager"
-              src={randomContent ? randomContent.img : ""}
+              src={randomContent.img}
               alt={randomContent.title}
             />
           </>
