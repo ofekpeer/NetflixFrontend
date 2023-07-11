@@ -1,19 +1,28 @@
 import { authReducer } from './authReducer';
 import { createContext, useEffect, useReducer } from 'react';
 
-const f = (name) => {
-  try {
-    JSON.parse(localStorage.getItem(name));
-  } catch {
-    return name === 'user' ? null : {};
+const tryParse = (name) => {
+  try{
+    JSON.parse(localStorage.getItem(name))
+    return true
   }
-};
+  catch{
+   return false
+  }
+}
+
 
 const initialState = {
-  user: f('user'),
+  user:
+    localStorage.getItem('user') !== null && tryParse('user') 
+      ? JSON.parse(localStorage.getItem('user'))
+      : null,
   isFatching: false,
   error: false,
-  userContentList: f('usercontentlist'),
+  userContentList:
+    localStorage.getItem('usercontentlist') !== null && tryParse('usercontentlist') 
+      ? JSON.parse(localStorage.getItem('usercontentlist'))
+      : {},
 };
 
 export const AuthContext = createContext(initialState);

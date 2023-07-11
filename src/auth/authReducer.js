@@ -25,6 +25,10 @@ export const authReducer = (state, action) => {
     case LOGOUT: {
       return { ...state,user: null, isFatching: false, error: null ,userContentList: null}
     }
+    case 'REMOVE_FROM_LIST':{////////////////////////////
+      let ContentList = action.payload;
+       return {...state, userContentList: ContentList}
+    }
     default: {
       return { ...state }
     }

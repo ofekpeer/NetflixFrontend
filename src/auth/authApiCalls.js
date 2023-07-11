@@ -1,4 +1,4 @@
-import { AddToList, AddToListFail, LoginFail, LoginStart, LoginSuccess } from './authAction';
+import { AddToList, AddToListFail, LoginFail, LoginStart, LoginSuccess, removeFromList } from './authAction';
 import axios from 'axios';
 
 export const loginCall = async (userCred, dispatch) => {
@@ -29,6 +29,18 @@ export const addContent = async (content, user, dispatch) => {
       content,
     });
     dispatch(AddToList(newContentList));
+  } catch (err) {
+    dispatch(AddToListFail(err));
+  }
+};
+///////////////////////////////////////////////////
+export const removeContent = async (content, user, dispatch) => {
+  try {
+    const ContentList = await axios.post('auth/removefromlist', {
+      user,
+      content,
+    });
+    dispatch(removeFromList(ContentList));
   } catch (err) {
     dispatch(AddToListFail(err));
   }

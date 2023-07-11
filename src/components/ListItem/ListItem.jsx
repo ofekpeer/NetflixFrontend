@@ -16,7 +16,7 @@ function ListItem({ item }) {
   const [exist, setExist] = useState(false);
 
   useEffect(() => {
-    if (userContentList) {
+    if (userContentList && userContentList.content) {
       const exsitItem = userContentList.content.find((i) => i._id === item._id);
       if (exsitItem) setExist(true);
     }
@@ -30,7 +30,7 @@ function ListItem({ item }) {
 
   const addToList = async (e) => {
     e.preventDefault();
-    if (userContentList) {
+    if (userContentList && userContentList.content) {
       const exsitItem = userContentList.content.find((i) => i._id === item._id);
       if (!exsitItem) {
         try {

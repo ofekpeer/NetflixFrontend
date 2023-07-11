@@ -14,7 +14,6 @@ function SearchPage() {
   const searchParams = new URLSearchParams(search);
 
   const [searchText, setSearchtext] = useState('');
-  console.log(3);
   const queryParam = searchParams.get('query') || '';
   const genreParam = searchParams.get('genre') || '';
   const [content, setContent] = useState([]);
@@ -27,8 +26,8 @@ function SearchPage() {
       }${genreParam && searchText ? '&' : ''}${
         searchText ? `query=${searchText}` : ''
       }`
-      );
-      console.log(2);
+    );
+    console.log(2);
   };
 
   useEffect(() => {
@@ -115,8 +114,6 @@ function SearchPage() {
                 ''
               )}{' '}
             </h3>
-
-            
             <div className="results-items">
               <div className="movies">
                 <h2>Movies</h2>

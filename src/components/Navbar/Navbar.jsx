@@ -92,9 +92,9 @@ function Navbar() {
                   <NavLink to="/movies" className="link">
                     <span className="navbarmainLinks">Movies</span>
                   </NavLink>
-                  {/* <NavLink to="/my-list" className="link">
+                  <NavLink to="/MyList" className="link">
                     <span>My List</span>
-                  </NavLink> */}
+                  </NavLink>
                 </div>
               </div>
             )}
