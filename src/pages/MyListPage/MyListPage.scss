@@ -7,8 +7,12 @@
   height: 100%;
   
   .content-mylist{
-    text-align: center;
-
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
   }
   .list {
     margin-top: 25px;
@@ -24,6 +28,7 @@
   justify-content: center;
   text-decoration: none;
   font-size: 27px;
+  margin: 32px;
   .page {
     width: 19px;
     background-color: rgb(64 64 64 / 59%);

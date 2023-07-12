@@ -10,7 +10,7 @@ function MyListPage() {
   const navigate = useNavigate();
   const [pages, setPages] = useState(0);
   const [contents, setContents] = useState([]);
-  const pageSize = 5;
+  const pageSize = 6;
   const [currentPage, setcurrentPage] = useState(0);
 
   useEffect(() => {
@@ -38,8 +38,8 @@ function MyListPage() {
   };
 
   return userContentList && userContentList?.content ? (
-    <div>
-      <div className="home">
+    <div className="home">
+      <div >
         <Navbar></Navbar>
         <div style={{ margin: '50px' }}></div>
         <div className='content-mylist'>
