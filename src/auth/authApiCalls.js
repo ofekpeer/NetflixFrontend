@@ -24,7 +24,7 @@ export const registerCall = async (newUser, dispatch) => {
 
 export const addContent = async (content, user, dispatch) => {
   try {
-    const newContentList = await axios.post('auth/addtolist', {
+    const newContentList = await axios.post('auth/addtolist', {//'content/addtolist'
       user,
       content,
     });
@@ -36,7 +36,7 @@ export const addContent = async (content, user, dispatch) => {
 ///////////////////////////////////////////////////
 export const removeContent = async (content, user, dispatch) => {
   try {
-    const ContentList = await axios.post('auth/removefromlist', {
+    const ContentList = await axios.post('auth/removefromlist', {//'content/removefromlist'
       user,
       content,
     });
